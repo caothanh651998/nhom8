@@ -1,1 +1,2 @@
 thu cap nhat bai
+commit nhanh thu
