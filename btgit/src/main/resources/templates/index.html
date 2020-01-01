@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+<div class="container">
+	<div class="col-12 text-center">
+		<h5>Nhóm 8</h5>
+	</div>
+	<div class="row">
+		<div class="col-12 no-padding">
+        <form class="form-inline" id="search-form">
+			<input class="form-control mr-sm-2" id="name" type="text" placeholder="Tìm kiếm name" />
+			<input class="form-control mr-sm-2" id="email" type="text" placeholder="Tìm kiếm email" />
+				<button class="btn btn-primary" type="submit" id="btn-search">
+				<i class="fa fa-search"></i> Search
+				</button>
+		</form>
+    </div>
+	</div>
+    <div class="row mt-4" style="martop:20px">
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+	        <span th:text="${successMessage}"></span>
+		        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <span aria-hidden="true">&times;</span>
+		        </button>
+		    </div>
+            <th:block >
+			    <div class="table-responsive">
+			        
+			    	<h5>List Employee</h5>
+			    	<a href="/employee/add" class="add">add</a>
+			    	
+			        <table class="table table-bordered table-hover">
+			            <thead>
+			            <tr>
+			                <th>Mã</th>
+			                <th>Họ Và Tên</th>
+			                <th>Địa Chỉ</th>
+			                <th>Email</th>
+			            </tr>
+			            </thead>
+			            <tbody>
+			            <tr th:each="employee : ${employee}">
+			                <td th:text="${employee.id}"></td>
+			                <td th:text="${employee.name}"></td>
+			                <td th:text="${employee.diachi}"></td>
+			                <td th:text="${employee.email}"></td>
+			                <td>
+			                    <a href="#" th:href="@{/employee/{id}/edit(id=${employee.id})}" class="mr-sm-2 text-primary">
+								    <i class="fa fa-pencil"></i>
+								</a>
+			                    <a href="#" th:href="@{/employee/{id}/del(id=${employee.id})}" class="text-danger">
+								    <i class="fa fa-trash"></i>
+								</a>
+			                </td>
+			            </tr>
+			            </tbody>
+			        </table>
+			    </div>
+			</th:block>
+        </div>
+</div>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
